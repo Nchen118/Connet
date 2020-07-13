@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<sitemanifest>
+  <DbFullSql path="C:\Users\User\Desktop\Chen Yew Seng\Connet\Connet\obj\Release\AutoScripts\ConnetConnectionString-Deployment_SchemaOnly.sql" Transacted="True" />
+  <appHostConfig path="" />
+  <contentPath path="C:\Users\User\Desktop\Chen Yew Seng\Connet\Connet\obj\Release\Package\PackageTmp" />
+</sitemanifest>

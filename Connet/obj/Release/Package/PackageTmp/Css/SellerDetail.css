@@ -1,0 +1,49 @@
+﻿#seller_header {
+    background-color: #343a40;
+    padding: 10px;
+    text-align: center;
+    color: white;
+}
+
+#body_SellerPic {
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+}
+
+p {
+    margin: 0;
+}
+
+.item_wrap {
+    width: 200px;
+    height: 250px;
+    box-shadow: 0 0 5px #444;
+    margin: 10px;
+}
+
+    .item_wrap:hover {
+        outline: 5px solid orange;
+        
+        text-shadow: 0 0 1px black;
+    }
+
+.item_img {
+    max-width: 100%;
+    max-height: 100%;
+    border-bottom: 1px solid #DDD;
+}
+
+.item_link {
+    width: 100%;
+    height: 50px;
+    overflow: hidden;
+    color: #666;
+    padding: 0 5px;
+    background-color: white;
+    
+}
+
+    .item_link:hover {
+        text-decoration: none;
+    }

@@ -1,0 +1,145 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Layout.master.cs" Inherits="Connet.LayoutPages.Layout" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <%-- Libraries --%>
+    <script src="<%= Page.ResolveClientUrl("~/Scripts/jquery-3.3.1.min.js") %>"></script>
+    <script src="<%= Page.ResolveClientUrl("~/Scripts/bootstrap.min.js") %>"></script>
+    <link href="<%= Page.ResolveClientUrl("~/Content/bootstrap.min.css") %>" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href="<%= Page.ResolveClientUrl("~/Css/Site.css") %>" rel="stylesheet" />
+
+    <%-- Additional imports --%>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form" runat="server">
+        <asp:ScriptManager ID="ScriptManager" runat="server"></asp:ScriptManager>
+
+        <div id="header">
+
+            <div id="nav_bar">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="<%= Page.ResolveClientUrl("~/About.aspx") %>">About</a></li>
+                    <li><a href="<%= Page.ResolveClientUrl("~/Contact.aspx") %>">Contact Us</a></li>
+                    <li><a href="<%= Page.ResolveClientUrl("~/PrivacyPolicy.aspx") %>">Privacy Policy</a></li>
+                    <li><a href="<%= Page.ResolveClientUrl("~/TermsAndConditions.aspx") %>">Terms of Service</a></li>
+                    <li><a href="<%= Page.ResolveClientUrl("~/adminAccess/adminPage.aspx") %>">Admin Access</a></li>
+                </ul>
+            </div>
+
+            <div id="header_wrap" class="form-inline d-flex justify-content-between px-5 py-2 align-items-center">
+
+                <%-- Logo --%>
+                <a id="logoName" class="text-center font-weight-bold" href="/">Connet</a>
+
+                <%-- Search bar --%>
+                <div class="input-group">
+                    <asp:TextBox ID="SearchBox" runat="server" placeholder="Search" CssClass="form-control" AutoCompleteType="None"></asp:TextBox>
+                    <div class="input-group-append">
+                        <button type="button" id="hidden_search_btn" class="btn btn-outline-warning" runat="server" OnServerClick="hidden_search_btn_Click"><i class="fas fa-search" style='font-size: 15px'></i></button>
+                    </div>
+                </div>
+
+                <%-- Authentication --%>
+                <div class="d-flex justify-content-around">
+                    <asp:Panel ID="Cart_Wrap" runat="server" Visible="False">
+                        <asp:LinkButton ID="Cart" runat="server" PostBackUrl="~/Viewer/Cart.aspx"><i class="fas fa-shopping-cart"></i></asp:LinkButton>
+                    </asp:Panel>
+                    <div class="dropdown">
+                        <asp:Label ID="AuthLink" runat="server"></asp:Label>
+
+                        <%-- Buyer --%>
+                        <asp:Panel ID="Buyer" runat="server" Visible="False">
+                            <div class="dropdown-content">
+                                <p><a href="<%= Page.ResolveClientUrl("~/Profile.aspx") %>">My Profile</a></p>
+                                <p><a href="<%= Page.ResolveClientUrl("~/Viewer/MyOrder.aspx") %>">My Order</a></p>
+                                <p><a href="<%= Page.ResolveClientUrl("~/Account/Logout.aspx") %>">Logout</a></p>
+                            </div>
+                        </asp:Panel>
+
+                        <%-- Seller --%>
+                        <asp:Panel ID="Seller" runat="server" Visible="False">
+                            <div class="dropdown-content">
+                                <p><a href="<%= Page.ResolveClientUrl("~/Profile.aspx") %>">My Profile</a></p>
+                                <p><a href="<%= Page.ResolveClientUrl("~/broadcaster/ProductOrder.aspx") %>">My Product Order</a></p>
+                                <p><a href="<%= Page.ResolveClientUrl("~/broadcaster/addproduct.aspx") %>">Add Product</a></p>
+                                <p><a href="<%= Page.ResolveClientUrl("~/broadcaster/broadcastinfo.aspx") %>">Broadcast</a></p>
+                                <p><a href="<%= Page.ResolveClientUrl("~/Account/Logout.aspx") %>">Logout</a></p>
+                            </div>
+                        </asp:Panel>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <asp:PlaceHolder ID="login_content" runat="server" Visible="False">
+            <%-- The Modal --%>
+            <div class="modal fade" id="loginModal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-body form-group m-0">
+
+                            <div class="d-flex justify-content-around">
+                                <span class="text-center font-weight-bold">Login</span>
+                                <a id="signup" href="<%= Page.ResolveClientUrl("~/Account/Register.aspx") %>" class="font-weight-bold">Sign Up</a>
+                            </div>
+
+                            <hr />
+
+                            <%-- Login form --%>
+                            <asp:UpdatePanel ID="LoginUpdatePanel" runat="server" UpdateMode="Conditional" ClientIDMode="Inherit" ValidateRequestMode="Enabled">
+                                <ContentTemplate>
+                                    <asp:TextBox ID="Username" runat="server" CssClass="form-control my-2" placeholder="Username/Email/PhoneNumber" CausesValidation="True" MaxLength="50" AutoPostBack="False"></asp:TextBox>
+                                    <small>
+                                        <asp:CustomValidator ID="UsernameValid" runat="server" ErrorMessage="CustomValidator" Display="Dynamic" CssClass="error" ControlToValidate="Username" ValidateEmptyText="True" SetFocusOnError="True" OnServerValidate="UsernameValidator_ServerValidate" EnableClientScript="False"></asp:CustomValidator>
+                                    </small>
+
+                                    <asp:TextBox ID="Password" runat="server" TextMode="Password" CssClass="form-control my-2" placeholder="Password" CausesValidation="True" MaxLength="50" AutoPostBack="False"></asp:TextBox>
+                                    <small>
+                                        <asp:CustomValidator ID="PasswordValid" runat="server" ErrorMessage="CustomValidator" CssClass="error" Display="Dynamic" ControlToValidate="Password" SetFocusOnError="True" ValidateEmptyText="True" OnServerValidate="PasswordValidator_ServerValidate" EnableClientScript="False"></asp:CustomValidator>
+                                    </small>
+                                </ContentTemplate>
+                                <Triggers>
+                                    <asp:AsyncPostBackTrigger runat="server" ControlID="Login" EventName="Click" />
+                                </Triggers>
+                            </asp:UpdatePanel>
+
+                            <%-- Remember me --%>
+                            <div class="custom-checkbox custom-control">
+                                <input type="checkbox" id="rmbMe" name="rmbMe" class="custom-control-input" runat="server" />
+                                <label for="rmbMe" class="custom-control-label">Remember Me</label>
+                            </div>
+
+                            <%-- Forget password --%>
+                            <a id="fgtPass" href="/ForgetPassword.aspx">Forget Password</a>
+                        </div>
+
+                        <%-- Login buttons --%>
+                        <div class="modal-footer bg-dark d-flex justify-content-center">
+                            <button type="button" class="btn btn-link text-white" data-dismiss="modal">Cancel</button>
+                            <asp:Button ID="Login" runat="server" CssClass="btn btn-outline-warning" OnClick="Login_Click" Text="Login"></asp:Button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </asp:PlaceHolder>
+        <div id="main">
+            <asp:ContentPlaceHolder ID="body" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+
+        <div id="footer" class="bg-dark text-white">
+            &copy; <%= DateTime.Now.Year %> All Rights Reserved
+        </div>
+    </form>
+    <script src="<%= Page.ResolveClientUrl("~/Js/Site.js") %>"></script>
+</body>
+</html>

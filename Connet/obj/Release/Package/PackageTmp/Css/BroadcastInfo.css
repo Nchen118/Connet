@@ -1,0 +1,42 @@
+﻿h5 {
+    margin: 0;
+}
+
+#button {
+    padding: 10px;
+    text-align: center;
+    background-color: #343a40;
+}
+
+#body_broadcastBtn {
+    color: white;
+}
+
+.item_wrap {
+    width: 150px;
+    height: 200px;
+    outline: 1px solid #666;
+    margin: 10px;
+}
+
+.item_img {
+    width: 150px;
+    height: 150px;
+    margin: 0;
+    border-bottom: 1px solid #DDD;
+}
+
+.item_link {
+    width: 150px;
+    height: 50px;
+    overflow: hidden;
+    padding: 0 5px;
+}
+
+.checked_item {
+    outline: 5px solid orange;
+}
+
+input[type="checkbox"]:hover {
+    display: block;
+}

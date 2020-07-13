@@ -1,0 +1,43 @@
+﻿label {
+    margin: 0;
+}
+
+h5 {
+    width: 100%;
+    text-align: center;
+    margin: 0;
+}
+
+a {
+    color: #666;
+    margin: 10px;
+    text-align: center;
+    width: 150px;
+    height: 150px;
+}
+
+a:hover {
+    text-decoration: none;
+    color: black;
+}
+
+p {
+    text-align: center;
+    font-weight: bold;
+    margin: 0;
+}
+
+.container_wrapper {
+    background-color: white;
+    width: 90%;
+    max-width: 800px;
+    margin: auto;
+}
+
+#body_MenuPanel {
+    box-shadow: 0 0 5px #444;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}

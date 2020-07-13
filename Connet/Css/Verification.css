@@ -1,0 +1,7 @@
+﻿#body_VerifyPage, #body_SuccessPage {
+    width: 100%;
+    max-width: 500px;
+    margin: auto;
+    padding: 10px;
+    align-items: center;
+}

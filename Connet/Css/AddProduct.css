@@ -1,0 +1,53 @@
+﻿#container_wrapper {
+    background-color: white;
+    padding: 10px;
+    display: flex;
+    border-top: 5px solid #EEE;
+    border-bottom: 5px solid #EEE;
+}
+
+h5 {
+    margin: 0;
+}
+
+#previewImg {
+    margin: 10px;
+    flex: 1 1 30%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#previewImg > img {
+    margin: auto;
+    width: 200px;
+    height: 200px;
+}
+
+#info {
+    flex: 1 1 70%;
+    padding: 10px;
+    border-left: 5px solid #EEE;
+}
+
+#body_Wrapper {
+    margin: auto;
+    padding: 10px;
+    max-width: 1200px;
+}
+
+label {
+    margin: 5px;
+}
+
+#button {
+    text-align: center;
+    padding: 10px;
+    background-color: #343a40;
+}
+
+#body_AddBtn:hover {
+    color: white;
+    background-color: orange;
+}

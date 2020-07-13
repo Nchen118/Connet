@@ -1,0 +1,45 @@
+﻿.item_wrap {
+    margin: 10px;
+    width: 500px;
+    background-color: white;
+    box-shadow: 0 0 3px #666;
+}
+
+    .item_wrap div {
+        width: 150px;
+        height: 150px;
+        border-right: 1px solid #DDD;
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        flex: 0 0 auto;
+    }
+
+    .item_wrap img {
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    .item_wrap p {
+        margin: 0;
+        padding: 0 5px;
+        overflow-x: hidden;
+        text-overflow: ellipsis;
+        display: flex;
+        align-items: center;
+        font-weight: bold;
+    }
+
+    .item_wrap a {
+        color: #666;
+        display: flex;
+        width: 100%;
+    }
+
+        .item_wrap a:hover {
+            color: black;
+            outline: 5px solid orange;
+            text-decoration: none;
+        }
